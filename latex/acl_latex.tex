@@ -6,7 +6,8 @@
 
 % Change "review" to "final" to generate the final (sometimes called camera-ready) version.
 % Change to "preprint" to generate a non-anonymous version with page numbers.
-\usepackage[review]{acl}
+% \usepackage[review]{acl}
+\usepackage{acl}
 
 % Standard package includes
 \usepackage{times}
@@ -35,13 +36,15 @@
 %additional package(s)
 \usepackage{graphicx}
 
+\usepackage{hyperref}
+
 % If the title and author information does not fit in the area allocated, uncomment the following
 %
 %\setlength\titlebox{<dim>}
 %
 % and set <dim> to something 5cm or larger.
 
-\title{Instructions for *ACL Proceedings}
+\title{AskCMU: Advancing Inquiry with End-to-End LLM-Driven Question-Answering Architecture}
 
 % Author information can be set in various styles:
 % For several authors from the same institution:
@@ -58,73 +61,78 @@
 %         \AND
 %         Author 2 \\ Address line \\ ... \\ Address line \And
 %         Author 3 \\ Address line \\ ... \\ Address line}
+% \author{Jiarui Li \and Ye Yuan \and Zehua Zhang \\
+        % Information Network Institute \\ ... \\ Address line}
+% \author{First Author \\
+%   Affiliation / Address line 1 \\
+%   Affiliation / Address line 2 \\
+%   Affiliation / Address line 3 \\
+%   \texttt{email@domain} \\\And
+%   Second Author \\
+%   Affiliation / Address line 1 \\
+%   Affiliation / Address line 2 \\
+%   Affiliation / Address line 3 \\
+%   \texttt{email@domain} \\}
 
-\author{First Author \\
-  Affiliation / Address line 1 \\
-  Affiliation / Address line 2 \\
-  Affiliation / Address line 3 \\
-  \texttt{email@domain} \\\And
-  Second Author \\
-  Affiliation / Address line 1 \\
-  Affiliation / Address line 2 \\
-  Affiliation / Address line 3 \\
-  \texttt{email@domain} \\}
-
-%\author{
-%  \textbf{First Author\textsuperscript{1}},
-%  \textbf{Second Author\textsuperscript{1,2}},
-%  \textbf{Third T. Author\textsuperscript{1}},
-%  \textbf{Fourth Author\textsuperscript{1}},
-%\\
-%  \textbf{Fifth Author\textsuperscript{1,2}},
-%  \textbf{Sixth Author\textsuperscript{1}},
-%  \textbf{Seventh Author\textsuperscript{1}},
-%  \textbf{Eighth Author \textsuperscript{1,2,3,4}},
-%\\
-%  \textbf{Ninth Author\textsuperscript{1}},
-%  \textbf{Tenth Author\textsuperscript{1}},
-%  \textbf{Eleventh E. Author\textsuperscript{1,2,3,4,5}},
-%  \textbf{Twelfth Author\textsuperscript{1}},
-%\\
-%  \textbf{Thirteenth Author\textsuperscript{3}},
-%  \textbf{Fourteenth F. Author\textsuperscript{2,4}},
-%  \textbf{Fifteenth Author\textsuperscript{1}},
-%  \textbf{Sixteenth Author\textsuperscript{1}},
-%\\
-%  \textbf{Seventeenth S. Author\textsuperscript{4,5}},
-%  \textbf{Eighteenth Author\textsuperscript{3,4}},
-%  \textbf{Nineteenth N. Author\textsuperscript{2,5}},
-%  \textbf{Twentieth Author\textsuperscript{1}}
-%\\
-%\\
-%  \textsuperscript{1}Affiliation 1,
-%  \textsuperscript{2}Affiliation 2,
-%  \textsuperscript{3}Affiliation 3,
-%  \textsuperscript{4}Affiliation 4,
-%  \textsuperscript{5}Affiliation 5
-%\\
-%  \small{
-%    \textbf{Correspondence:} \href{mailto:email@domain}{email@domain}
-%  }
-%}
+\author{
+    Jiarui Li\thanks{These authors contributed equally to this work.} \\
+    Information Network Institute \\
+    \texttt{email@domain} \\\And
+    Ye Yuan\footnotemark[1] \\
+    Information Network Institute \\
+    \texttt{yeyuan3@andrew.cmu.edu} \\\And
+    Zehua Zhang\footnotemark[1] \\
+    Information Network Institute \\
+    \texttt{email@domain} \\
+}
 
 \begin{document}
-\maketitle
+\maketitle 
 \begin{abstract}
-This document is a supplement to the general instructions for *ACL authors. It contains instructions for using the \LaTeX{} style files for ACL conferences.
-The document itself conforms to its own specifications, and is therefore an example of what your manuscript should look like.
-These instructions should be used both for papers submitted for review and for final versions of accepted papers.
+Placeholder. Code available at \href{https://github.com/anlp-team/LTI_Neural_Navigator}{here}.
 \end{abstract}
 
 \section{Introduction}
 
-These instructions are for authors submitting papers to *ACL conferences using \LaTeX. They are not self-contained. All authors must follow the general instructions for *ACL proceedings,\footnote{\url{http://acl-org.github.io/ACLPUB/formatting.html}} and this document contains additional instructions for the \LaTeX{} style files.
+Large Language Models (LLMs) such as ChatGPT3.5 and Llama 2 have demonstrated their efficacy in question-answering (QA) tasks\cite{GPT3, LLAMA2}. These models are trained on vast amounts of text data from various sources, enabling them to understand and generate human-like responses to questions across a wide range of topics. While LLMs acquired such ability through extensive pretraining, it is evident that information of some scale is retained in LLMs' parameters\cite{StarCoder}. LLMs are known to hallucinate: the model may generate results that are irrelevant or random outputs that may hold no correlation with inputs or desired outputs \cite{Hallucination_survey}. Hallucination is often unreliable and may be misleading or offensive to the users. Many reasons are proposed to explain LLM hallucination, such as limited model capacity or insufficient pretraining. While pretraining should cultivate the model's emergent ability, it is not expected to help the model remember all the pretraining data accurately. Recently, methods such as In-Context Learning have been investigated to discover LLM's performance on certain tasks such as sentiment classification in a few-shots setting. By providing a few examples related to the desired tasks, the model could solve the expected problem with relatively higher accuracy without the need to change its parameters. Retrieval Augmented Generation (RAG) \cite{RAG} is recently regarded as a promising solution to extend the model's generation capacity on tasks that require high factuality by introducing context information from external datasets. Connecting the models to external datasets, RAG could help LLMs handle knowledge-intensive tasks and allow continuous knowledge updates and integration of domain-specific information. 
 
-The templates include the \LaTeX{} source of this document (\texttt{acl\_latex.tex}),
-the \LaTeX{} style file used to format it (\texttt{acl.sty}),
-an ACL bibliography style (\texttt{acl\_natbib.bst}),
-an example bibliography (\texttt{custom.bib}),
-and the bibliography for the ACL Anthology (\texttt{anthology.bib}).
+\section{System Overview}
+
+As shown in Figure~\ref{}, 
+
+\section{Dataset Creation}
+
+\subsection{Web Crawler}
+
+Placeholder.
+
+\subsection{Annotation Automation}
+
+Placeholder
+
+\subsection{Dataset Evaluation}
+
+IAA metrics, calculate cohen's kappa score ...
+
+\section{Models}
+
+\subsection{Embedding Model}
+
+Placeholder.
+
+\subsection{Reranking Model}
+
+Placeholder.
+
+\subsection{Core Model}
+
+Placeholder.
+
+\section{Experiments}
+
+Placeholder.
+
+\section{Related Researches}
 
 \section{Engines}
 
